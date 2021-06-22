@@ -28,6 +28,12 @@ if pfile == "" or infile == "" or outfile == "":
 pfont = fontforge.open(pfile)
 infont = fontforge.open(infile)
 
+infont.selection.select("u005C")       # \
+infont.copy()
+infont.selection.select("u00A5")    # ¥
+infont.paste()
+infont.selection.none()
+
 for c in patchedchars:
     pfont.selection.select(("more",None), c)
     infont.selection.select(("more",None), c)
